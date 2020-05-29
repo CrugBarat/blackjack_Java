@@ -8,6 +8,8 @@ public class BlackJack {
         this.player = player;
         this.dealer = dealer;
         this.deck = deck;
+        this.deck.addCards();
+        this.getDeck().shuffleCards();
     }
 
     public Player getPlayer() {
@@ -23,8 +25,6 @@ public class BlackJack {
     }
 
     public void deal() {
-        deck.addCards();
-        deck.shuffleCards();
         dealer.dealToPlayer(player, deck);
         dealer.dealToPlayer(player, deck);
         dealer.dealToSelf(deck);
