@@ -30,5 +30,6 @@ import static org.junit.Assert.assertEquals;
             assertEquals(51, deck.getDeckSize());
         }
 
+
     }
 

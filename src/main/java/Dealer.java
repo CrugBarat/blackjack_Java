@@ -36,4 +36,12 @@ public class Dealer {
         return total;
     }
 
+    public int checkTotal() {
+        if (handTotal() > 21){
+            return 0;
+        } else {
+            return handTotal();
+        }
+    }
+
 }

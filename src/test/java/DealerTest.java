@@ -8,7 +8,7 @@ public class DealerTest {
     private Dealer dealer;
     private Player player;
     private Deck deck;
-    private Card card;
+    private Card card, card2, card3;
 
     @Before
     public void before() {
@@ -18,6 +18,8 @@ public class DealerTest {
         deck.addCards();
         deck.shuffleCards();
         card = new Card(CardSuit.SPADES, CardValue.FOUR);
+        card2 = new Card(CardSuit.SPADES, CardValue.TEN);
+        card3 = new Card(CardSuit.SPADES, CardValue.QUEEN);
     }
 
     @Test
@@ -60,6 +62,20 @@ public class DealerTest {
     public void canGetHandTotalPlayer() {
         player.addCard(card);
         assertEquals(4, player.handTotal());
+    }
+
+    @Test
+    public void cancheckHandTotalProceed() {
+        dealer.addCard(card);
+        assertEquals(4, dealer.checkTotal());
+    }
+
+    @Test
+    public void cancheckHandTotalBust() {
+        dealer.addCard(card);
+        dealer.addCard(card2);
+        dealer.addCard(card3);
+        assertEquals(0, dealer.checkTotal());
     }
 
 }
