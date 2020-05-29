@@ -8,6 +8,7 @@ public class BlackJackTest {
     private BlackJack blackjack;
     private Player player;
     private Dealer dealer;
+    private Deck deck;
 
 
     @Before
@@ -15,6 +16,9 @@ public class BlackJackTest {
         player =  new Player("Maverick");
         dealer = new Dealer("Jane Doe");
         blackjack = new BlackJack(player, dealer);
+        deck = new Deck();
+        deck.addCards();
+        deck.shuffleCards();
     }
 
     @Test
@@ -25,5 +29,12 @@ public class BlackJackTest {
     @Test
     public void canGetDealer() {
         assertEquals(dealer, blackjack.getDealer());
+    }
+
+    @Test
+    public void canDealCards() {
+        blackjack.deal(deck);
+        assertEquals(2, player.getCardsSize());
+        assertEquals(2, dealer.getCardsSize());
     }
 }

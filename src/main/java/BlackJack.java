@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class BlackJack {
 
     private Player player;
@@ -14,5 +16,12 @@ public class BlackJack {
 
     public Dealer getDealer() {
         return this.dealer;
+    }
+
+    public void deal(Deck deck) {
+        dealer.dealToPlayer(player, deck);
+        dealer.dealToPlayer(player, deck);
+        dealer.dealToSelf(deck);
+        dealer.dealToSelf(deck);
     }
 }
