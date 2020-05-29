@@ -38,6 +38,12 @@ public class DealerTest {
     }
 
     @Test
+    public void canAddACard() {
+        dealer.addCard(card);
+        assertEquals(1, dealer.getCardsSize());
+    }
+
+    @Test
     public void canDealCardToSelf() {
         dealer.dealToSelf(deck);
         assertEquals(51, deck.getDeckSize());
