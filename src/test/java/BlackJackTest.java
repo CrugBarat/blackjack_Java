@@ -47,6 +47,19 @@ public class BlackJackTest {
     }
 
     @Test
+    public void canPlayerTwist() {
+        player.addCard(card4);
+        blackjack.playerTwist();
+        assertEquals(2, player.getCardsSize());
+    }
+
+    @Test
+    public void canPlayerStick() {
+        player.addCard(card4);
+        assertEquals(10, blackjack.playerStick());
+    }
+
+    @Test
     public void canCompareTotalsPlayerWins() {
         dealer.addCard(card1);
         player.addCard(card2);
@@ -80,8 +93,10 @@ public class BlackJackTest {
 
     @Test
     public void canCompareTotalsHouseWinsOnDraw() {
-        dealer.addCard(card1);
-        player.addCard(card1);
+        dealer.addCard(card3);
+        dealer.addCard(card4);
+        player.addCard(card3);
+        player.addCard(card4);
         assertEquals(dealer, blackjack.compareTotals(dealer, player));
     }
 

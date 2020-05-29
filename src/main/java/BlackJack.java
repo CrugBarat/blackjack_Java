@@ -9,7 +9,7 @@ public class BlackJack {
         this.dealer = dealer;
         this.deck = deck;
         this.deck.addCards();
-        this.getDeck().shuffleCards();
+        this.deck.shuffleCards();
     }
 
     public Player getPlayer() {
@@ -29,6 +29,19 @@ public class BlackJack {
         dealer.dealToPlayer(player, deck);
         dealer.dealToSelf(deck);
         dealer.dealToSelf(deck);
+    }
+
+    public void playerTwist() {
+        if (player.checkTotal() < 21) {
+            dealer.dealToPlayer(player, deck);
+        }
+    }
+
+    public int playerStick() {
+        if (player.checkTotal() < 21) {
+            return player.checkTotal();
+        }
+        return 0;
     }
 
     public Object compareTotals(Dealer dealer, Player player) {
