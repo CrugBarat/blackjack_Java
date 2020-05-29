@@ -84,4 +84,24 @@ public class BlackJackTest {
         assertEquals(dealer, blackjack.compareTotals(dealer, player));
     }
 
+    @Test
+    public void canCompareTotalsDealerBustMultiCards() {
+        dealer.addCard(card2);
+        player.addCard(card1);
+        dealer.addCard(card4);
+        player.addCard(card3);
+        dealer.addCard(card3);
+        assertEquals(player, blackjack.compareTotals(dealer, player));
+    }
+
+    @Test
+    public void canCompareTotalsPlayerrBustMultiCards() {
+        dealer.addCard(card1);
+        player.addCard(card2);
+        dealer.addCard(card3);
+        player.addCard(card3);
+        player.addCard(card3);
+        assertEquals(dealer, blackjack.compareTotals(dealer, player));
+    }
+
 }
