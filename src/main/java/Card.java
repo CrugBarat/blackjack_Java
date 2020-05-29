@@ -1,7 +1,7 @@
 public class Card {
 
-    private CardSuit suit;
-    private CardValue value;
+    private final CardSuit suit;
+    private final CardValue value;
 
     public Card (CardSuit suit, CardValue value) {
         this.suit = suit;
