@@ -9,7 +9,7 @@ public class BlackJackTest {
     private Player player;
     private Dealer dealer;
     private Deck deck;
-    private Card card1, card2;
+    private Card card1, card2, card3, card4;
 
 
     @Before
@@ -20,6 +20,8 @@ public class BlackJackTest {
         blackjack = new BlackJack(player, dealer, deck);
         card1 = new Card(CardSuit.HEARTS, CardValue.FIVE);
         card2 = new Card(CardSuit.CLUBS, CardValue.ACE);
+        card3 = new Card(CardSuit.HEARTS, CardValue.TEN);
+        card4 = new Card(CardSuit.CLUBS, CardValue.KING);
     }
 
     @Test
@@ -51,9 +53,27 @@ public class BlackJackTest {
     }
 
     @Test
+    public void canCompareTotalsPlayerWinsMultiCards() {
+        dealer.addCard(card1);
+        player.addCard(card2);
+        dealer.addCard(card3);
+        player.addCard(card4);
+        assertEquals(player, blackjack.compareTotals(dealer, player));
+    }
+
+    @Test
     public void canCompareTotalsDealerWins() {
         dealer.addCard(card2);
         player.addCard(card1);
+        assertEquals(dealer, blackjack.compareTotals(dealer, player));
+    }
+
+    @Test
+    public void canCompareTotalsDealerWinsMultiCards() {
+        dealer.addCard(card2);
+        player.addCard(card1);
+        dealer.addCard(card4);
+        player.addCard(card3);
         assertEquals(dealer, blackjack.compareTotals(dealer, player));
     }
 
