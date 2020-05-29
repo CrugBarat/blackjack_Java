@@ -45,8 +45,8 @@ public class BlackJack {
     }
 
     public Object compareTotals(Dealer dealer, Player player) {
-        if (dealer.checkTotal(deck) != player.checkTotal()) {
-            if (dealer.checkTotal(deck) > player.checkTotal()) {
+        if (dealer.checkDealerTotal(deck) != player.checkTotal()) {
+            if (dealer.checkDealerTotal(deck) > player.checkTotal()) {
                 return dealer;
             } else {
                 return player;
