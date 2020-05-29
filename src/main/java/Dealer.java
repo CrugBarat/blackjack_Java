@@ -36,12 +36,14 @@ public class Dealer {
         return total;
     }
 
-    public int checkTotal() {
+    public int checkTotal(Deck deck) {
         if (handTotal() > 21){
             return 0;
-        } else {
-            return handTotal();
-        }
+        } else if (handTotal() < 16) {
+            dealToSelf(deck);
+            checkTotal(deck);
+        } else return handTotal();
+        return 0;
     }
 
 }

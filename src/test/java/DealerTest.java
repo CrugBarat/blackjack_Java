@@ -66,8 +66,9 @@ public class DealerTest {
 
     @Test
     public void cancheckHandTotalProceed() {
-        dealer.addCard(card);
-        assertEquals(4, dealer.checkTotal());
+        dealer.addCard(card2);
+        dealer.addCard(card3);
+        assertEquals(20, dealer.checkTotal(deck));
     }
 
     @Test
@@ -75,7 +76,7 @@ public class DealerTest {
         dealer.addCard(card);
         dealer.addCard(card2);
         dealer.addCard(card3);
-        assertEquals(0, dealer.checkTotal());
+        assertEquals(0, dealer.checkTotal(deck));
     }
 
 }
