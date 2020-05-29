@@ -11,4 +11,8 @@ public class GameTable {
     public int getPlayersSize() {
         return this.players.size();
     }
+
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
 }
