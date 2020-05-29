@@ -24,8 +24,18 @@ public class Player {
 
     public int handTotal(){
         int total = 0;
-        for(Card card : this.cards) total += card.getCardValue();
+        for(Card card : this.cards) {
+            total += card.getCardValue();
+        }
         return total;
+    }
+
+    public int checkTotal() {
+        if (handTotal() > 21){
+            return 0;
+        } else {
+            return handTotal();
+        }
     }
 
 }
