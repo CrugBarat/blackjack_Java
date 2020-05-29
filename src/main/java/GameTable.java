@@ -12,7 +12,12 @@ public class GameTable {
         return this.players.size();
     }
 
+    public ArrayList<Player> getPlayers() {
+        return this.players;
+    }
+
     public void addPlayer(Player player) {
         this.players.add(player);
     }
+
 }

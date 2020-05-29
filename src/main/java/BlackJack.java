@@ -1,19 +1,19 @@
 public class BlackJack {
 
-    private Player player;
     private Dealer dealer;
     private Deck deck;
+    private GameTable gameTable;
 
-    public BlackJack(Player player, Dealer dealer, Deck deck) {
-        this.player = player;
+    public BlackJack(GameTable gameTable, Dealer dealer, Deck deck) {
+        this.gameTable = gameTable;
         this.dealer = dealer;
         this.deck = deck;
         this.deck.addCards();
         this.deck.shuffleCards();
     }
 
-    public Player getPlayer() {
-        return this.player;
+    public GameTable getGameTable() {
+        return this.gameTable;
     }
 
     public Dealer getDealer() {
@@ -25,19 +25,23 @@ public class BlackJack {
     }
 
     public void deal() {
-        dealer.dealToPlayer(player, deck);
-        dealer.dealToPlayer(player, deck);
+        if (this.gameTable.getPlayersSize() > 0) {
+            for (Player player : this.gameTable.getPlayers()) {
+                dealer.dealToPlayer(player, deck);
+                dealer.dealToPlayer(player, deck);
+            }
+        }
         dealer.dealToSelf(deck);
         dealer.dealToSelf(deck);
     }
 
-    public void playerTwist() {
+    public void playerTwist(Player player) {
         if (player.checkTotal() < 21) {
             dealer.dealToPlayer(player, deck);
         }
     }
 
-    public int playerStick() {
+    public int playerStick(Player player) {
         if (player.checkTotal() < 21) {
             return player.checkTotal();
         }
@@ -54,7 +58,7 @@ public class BlackJack {
         } return dealer;
     }
 
-    public Object blackJack() {
+    public Object blackJack(Player player) {
         deal();
         return compareTotals(dealer, player);
     }
