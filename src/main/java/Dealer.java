@@ -22,7 +22,18 @@ public class Dealer {
         return this.cards.size();
     }
 
-    public void dealToSelf(Deck deck) {
-        this.cards.add(deck.dealCard());
+    public void addCard(Card card) {
+        this.cards.add(card);
     }
+
+    public void dealToSelf(Deck deck) {
+        addCard(deck.dealCard());
+    }
+
+    public int handTotal(){
+        int total = 0;
+        for(Card card : this.cards) total += card.getCardValue();
+        return total;
+    }
+
 }

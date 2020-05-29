@@ -44,4 +44,16 @@ public class DealerTest {
         assertEquals(1, dealer.getCardsSize());
     }
 
+    @Test
+    public void canGetHandTotalSelf() {
+        dealer.addCard(card);
+        assertEquals(4, dealer.handTotal());
+    }
+
+    @Test
+    public void canGetHandTotalPlayer() {
+        player.addCard(card);
+        assertEquals(4, player.handTotal());
+    }
+
 }
