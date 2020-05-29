@@ -43,6 +43,7 @@ public class BlackJackTest {
         blackjack.deal();
         assertEquals(2, player.getCardsSize());
         assertEquals(2, dealer.getCardsSize());
+        assertEquals(48, deck.getDeckSize());
     }
 
     @Test
