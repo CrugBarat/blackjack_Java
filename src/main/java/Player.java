@@ -52,20 +52,21 @@ public class Player {
         }
     }
 
-    public CardSuit getCardSuitCardOne() {
-        return this.cards.get(0).getSuit();
+    public CardSuit getCardSuit() {
+        for (Card card : this.cards) {
+            return card.getSuit();
+        }
+        return null;
     }
 
-    public CardSuit getCardSuitCardTwo() {
-        return this.cards.get(1).getSuit();
+    public CardValue getCardFaceValue() {
+        for (Card card : this.cards) {
+            return card.getCardFaceValue();
+        }
+        return null;
     }
 
-    public CardValue getCardFaceValueCardOne() {
-        return this.cards.get(0).getCardFaceValue();
+    public ArrayList<Card> getCards() {
+        return cards;
     }
-
-    public CardValue getCardFaceValueCardTwo() {
-        return this.cards.get(1).getCardFaceValue();
-    }
-
 }
