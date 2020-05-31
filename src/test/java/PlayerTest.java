@@ -22,6 +22,12 @@ public class PlayerTest {
     }
 
     @Test
+    public void canSetName() {
+        player.setName("Jane Doe");
+        assertEquals("Jane Doe", player.getName());
+    }
+
+    @Test
     public void canCardsSizeToStartAtZero() {
         assertEquals(0, player.getCardsSize());
     }
