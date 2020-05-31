@@ -70,15 +70,29 @@ public class PlayerTest {
     }
 
     @Test
-    public void canGetCardSuit() {
+    public void canGetCardSuitCardOne() {
         player.addCard(card);
-        assertEquals(CardSuit.SPADES, player.getCardSuit());
+        assertEquals(CardSuit.SPADES, player.getCardSuitCardOne());
     }
 
     @Test
-    public void canGetCardFaceValue() {
+    public void canGetCardFaceValueCardOne() {
         player.addCard(card);
-        assertEquals(CardValue.FOUR, player.getCardFaceValue());
+        assertEquals(CardValue.FOUR, player.getCardFaceValueCardOne());
+    }
+
+    @Test
+    public void canGetCardSuitCardTwo() {
+        player.addCard(card);
+        player.addCard(card2);
+        assertEquals(CardSuit.SPADES, player.getCardSuitCardTwo());
+    }
+
+    @Test
+    public void canGetCardFaceValueCardTwo() {
+        player.addCard(card);
+        player.addCard(card2);
+        assertEquals(CardValue.TEN, player.getCardFaceValueCardTwo());
     }
 
 }

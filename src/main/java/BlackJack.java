@@ -61,7 +61,7 @@ public class BlackJack {
             } else {
                 return player.getName();
             }
-        } return dealer;
+        } return dealer.getName();
     }
 
     public Object blackJack(Player player) {

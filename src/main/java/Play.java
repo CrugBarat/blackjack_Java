@@ -12,10 +12,10 @@ public class Play {
         GameTable gametable = new GameTable();
         Deck deck = new Deck();
         BlackJack blackJack = new BlackJack(gametable, dealer, deck);
+        Scanner userInput = new Scanner(System.in);
 
         System.out.println("Please enter your name:");
-        Scanner userName = new Scanner(System.in);
-        String name = userName.next();
+        String name = userInput.next();
         player.setName(name);
         gametable.addPlayer(player);
 
@@ -24,8 +24,7 @@ public class Play {
 
 
         System.out.println("How much cash do you have?");
-        Scanner userCash = new Scanner(System.in);
-        int cash = Integer.parseInt(userCash.next());
+        int cash = Integer.parseInt(userInput.next());
         player.setCash(cash);
 
         System.out.println("\n");
@@ -33,15 +32,16 @@ public class Play {
         System.out.println("Dealing....");
 
         blackJack.deal();
-
-        System.out.println("Your hand: " + player.handTotal());
-        System.out.println("Dealers hand: " + dealer.handTotal());
+//
+        System.out.println("Your hand: ");
+        System.out.println(player.getCardFaceValueCardOne() + " " + player.getCardSuitCardOne() + " & " + player.getCardFaceValueCardTwo() + " " + player.getCardSuitCardTwo());
+        System.out.println("Hand Total: " + player.handTotal() + "\n");
+        System.out.println("Dealers hand: " + dealer.getCardFaceValueCardOne() + " " + dealer.getCardSuitCardOne());
 
         System.out.println("\n");
 
         System.out.println("Stick or Twist? (S/T)");
-        Scanner userSorT = new Scanner(System.in);
-        String stickOrTwist = userSorT.next();
+        String stickOrTwist = userInput.next();
 
         blackJack.stickOrTwist(player, stickOrTwist);
 
