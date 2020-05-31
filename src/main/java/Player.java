@@ -52,4 +52,18 @@ public class Player {
         }
     }
 
+    public CardSuit getCardSuit() {
+        for (Card card : this.cards) {
+            return card.getSuit();
+        }
+        return null;
+    }
+
+    public CardValue getCardFaceValue() {
+        for (Card card : this.cards) {
+            return card.getCardFaceValue();
+        }
+        return null;
+    }
+
 }

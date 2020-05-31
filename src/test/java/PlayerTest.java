@@ -69,5 +69,17 @@ public class PlayerTest {
         assertEquals(0, player.checkTotal());
     }
 
+    @Test
+    public void canGetCardSuit() {
+        player.addCard(card);
+        assertEquals(CardSuit.SPADES, player.getCardSuit());
+    }
+
+    @Test
+    public void canGetCardFaceValue() {
+        player.addCard(card);
+        assertEquals(CardValue.FOUR, player.getCardFaceValue());
+    }
+
 }
 

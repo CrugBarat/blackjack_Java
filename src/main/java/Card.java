@@ -15,4 +15,8 @@ public class Card {
     public int getCardValue() {
         return this.value.getValue();
     }
+
+    public CardValue getCardFaceValue() {
+        return this.value;
+    }
 }

@@ -22,4 +22,9 @@ public class CardTest {
         assertEquals(5, card.getCardValue());
     }
 
+    @Test
+    public void canGetCardFaceValue() {
+        assertEquals(CardValue.FIVE, card.getCardFaceValue());
+    }
+
 }
