@@ -48,12 +48,18 @@ public class BlackJack {
         return 0;
     }
 
+    public void stickOrTwist(Player player, String input) {
+        if(input.equals("T")){
+            playerTwist(player);
+        }
+    }
+
     public Object compareTotals(Dealer dealer, Player player) {
         if (dealer.checkDealerTotal(deck) != player.checkTotal()) {
             if (dealer.checkDealerTotal(deck) > player.checkTotal()) {
-                return dealer;
+                return dealer.getName();
             } else {
-                return player;
+                return player.getName();
             }
         } return dealer;
     }

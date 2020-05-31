@@ -8,7 +8,7 @@ public class Play {
         System.out.println("\n");
 
         Player player = new Player("");
-        Dealer dealer = new Dealer("Maverick");
+        Dealer dealer = new Dealer("Dealer");
         GameTable gametable = new GameTable();
         Deck deck = new Deck();
         BlackJack blackJack = new BlackJack(gametable, dealer, deck);
@@ -36,6 +36,19 @@ public class Play {
 
         System.out.println("Your hand: " + player.handTotal());
         System.out.println("Dealers hand: " + dealer.handTotal());
+
+        System.out.println("\n");
+
+        System.out.println("Stick or Twist? (S/T)");
+        Scanner userSorT = new Scanner(System.in);
+        String stickOrTwist = userSorT.next();
+
+        blackJack.stickOrTwist(player, stickOrTwist);
+
+        System.out.println("Your hand: " + player.handTotal());
+        System.out.println("Dealers hand: " + dealer.handTotal());
+        System.out.println(blackJack.compareTotals(dealer, player) + " WINS!");
+
 
 
     }
