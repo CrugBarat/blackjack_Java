@@ -28,6 +28,17 @@ public class PlayerTest {
     }
 
     @Test
+    public void canGetCash() {
+        assertEquals(0, player.getCash());
+    }
+
+    @Test
+    public void canSetCash() {
+        player.setCash(100);
+        assertEquals(100, player.getCash());
+    }
+
+    @Test
     public void canCardsSizeToStartAtZero() {
         assertEquals(0, player.getCardsSize());
     }

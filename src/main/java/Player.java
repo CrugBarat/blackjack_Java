@@ -4,10 +4,12 @@ public class Player {
 
     private String name;
     private ArrayList<Card> cards;
+    private int cash;
 
     public Player(String name) {
         this.name = name;
         this.cards = new ArrayList<Card>();
+        this.cash = 0;
     }
 
     public String getName() {
@@ -16,6 +18,14 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCash() {
+        return this.cash;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 
     public int getCardsSize() {
