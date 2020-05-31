@@ -25,6 +25,7 @@ public class BlackJackTest {
         gameTable.addPlayer(player4);
         dealer = new Dealer("Jane Doe");
         deck = new Deck();
+        deck.addCards();
         blackjack = new BlackJack(gameTable, dealer, deck);
         card1 = new Card(CardSuit.HEARTS, CardValue.SEVEN);
         card2 = new Card(CardSuit.CLUBS, CardValue.ACE);
@@ -63,6 +64,13 @@ public class BlackJackTest {
         player1.addCard(card4);
         blackjack.playerTwist(player1);
         assertEquals(2, player1.getCardsSize());
+    }
+
+    @Test
+    public void canDealerTwist() {
+        dealer.addCard(card4);
+        blackjack.dealerTwist();
+        assertEquals(2, dealer.getCardsSize());
     }
 
     @Test
@@ -120,7 +128,7 @@ public class BlackJackTest {
     }
 
     @Test
-    public void canCompareTotalsPlayerrBustMultiCards() {
+    public void canCompareTotalsPlayerBustMultiCards() {
         dealer.addCard(card1);
         player1.addCard(card2);
         dealer.addCard(card3);
