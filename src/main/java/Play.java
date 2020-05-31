@@ -63,7 +63,7 @@ public class Play {
 
                 if(stickOrTwist.equals("T")) {
                     blackJack.stickOrTwist(player, stickOrTwist);
-                    System.out.println(player.getCards().get(player.getCardsSize()-1).getCardFaceValue() + " " + player.getCards().get(player.getCardsSize()-1).getSuit());
+                    System.out.println("\n" + player.getCards().get(player.getCardsSize()-1).getCardFaceValue() + " " + player.getCards().get(player.getCardsSize()-1).getSuit());
                     System.out.println("Hand total: " + player.handTotal() + "\n");
                     if(player.handTotal() > 21) {
                         System.out.println("No luck, you're BUST");
@@ -77,7 +77,20 @@ public class Play {
             }
 
             System.out.println("\nDealers hand: " + dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - " + dealer.getCards().get(1).getCardFaceValue() + " " + dealer.getCards().get(1).getSuit());
-            System.out.println("Dealer's hand total: " + dealer.handTotal());
+            System.out.println("Dealer's hand total: " + dealer.handTotal() + "\n");
+
+            while(dealer.handTotal() < 16) {
+                System.out.println("Dealer twist:");
+                blackJack.dealerTwist();
+                System.out.println(dealer.getCards().get(dealer.getCardsSize()-1).getCardFaceValue() + " " + dealer.getCards().get(dealer.getCardsSize()-1).getSuit());
+                System.out.println("Dealer total: " + dealer.handTotal() + "\n");
+                if(dealer.handTotal() > 21){
+                    System.out.println("Oooft! The Dealer's BUST \n");
+                    break;
+                }
+            }
+
+            System.out.println("Dealer total: " + dealer.handTotal());
             System.out.println("Your Hand total: " + player.handTotal() + "\n");
 
             System.out.println(blackJack.compareTotals(dealer, player) + " WINS! \n");
