@@ -65,6 +65,10 @@ public class Play {
                     blackJack.stickOrTwist(player, stickOrTwist);
                     System.out.println(player.getCards().get(player.getCardsSize()-1).getCardFaceValue() + " " + player.getCards().get(player.getCardsSize()-1).getSuit());
                     System.out.println("Hand total: " + player.handTotal() + "\n");
+                    if(player.handTotal() > 21) {
+                        System.out.println("No luck, you're BUST");
+                        break;
+                    }
                 }
 
                 if(stickOrTwist.equals("S")) {

@@ -36,17 +36,9 @@ public class BlackJack {
     }
 
     public void playerTwist(Player player) {
-        if (player.checkTotal() < 21) {
-            dealer.dealToPlayer(player, deck);
-        }
+        dealer.dealToPlayer(player, deck);
     }
 
-    public int playerStick(Player player) {
-        if (player.checkTotal() < 21) {
-            return player.checkTotal();
-        }
-        return 0;
-    }
 
     public void stickOrTwist(Player player, String input) {
         if(input.equals("T")){
@@ -64,8 +56,4 @@ public class BlackJack {
         } return dealer.getName();
     }
 
-    public Object blackJack(Player player) {
-        deal();
-        return compareTotals(dealer, player);
-    }
 }

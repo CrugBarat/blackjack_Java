@@ -66,18 +66,12 @@ public class BlackJackTest {
     }
 
     @Test
-    public void canPlayerStick() {
-        player1.addCard(card4);
-        assertEquals(10, blackjack.playerStick(player1));
-    }
-
-    @Test
     public void canCompareTotalsPlayerWins() {
         dealer.addCard(card1);
         dealer.addCard(card2);
         player1.addCard(card3);
         player1.addCard(card4);
-        assertEquals(player1, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jim", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -86,7 +80,7 @@ public class BlackJackTest {
         player1.addCard(card2);
         dealer.addCard(card3);
         player1.addCard(card4);
-        assertEquals(player1, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jim", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -94,7 +88,7 @@ public class BlackJackTest {
         dealer.addCard(card2);
         dealer.addCard(card4);
         player1.addCard(card1);
-        assertEquals(dealer, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jane Doe", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -103,7 +97,7 @@ public class BlackJackTest {
         player1.addCard(card1);
         dealer.addCard(card4);
         player1.addCard(card3);
-        assertEquals(dealer, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jane Doe", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -112,7 +106,7 @@ public class BlackJackTest {
         dealer.addCard(card4);
         player1.addCard(card3);
         player1.addCard(card4);
-        assertEquals(dealer, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jane Doe", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -122,7 +116,7 @@ public class BlackJackTest {
         dealer.addCard(card4);
         player1.addCard(card3);
         dealer.addCard(card3);
-        assertEquals(player1, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jim", blackjack.compareTotals(dealer, player1));
     }
 
     @Test
@@ -132,7 +126,7 @@ public class BlackJackTest {
         dealer.addCard(card3);
         player1.addCard(card3);
         player1.addCard(card3);
-        assertEquals(dealer, blackjack.compareTotals(dealer, player1));
+        assertEquals("Jane Doe", blackjack.compareTotals(dealer, player1));
     }
 
 }
