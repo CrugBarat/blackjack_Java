@@ -32,10 +32,14 @@ public class Play {
 
         while(player.getCash() >0) {
             player.setCards(new ArrayList<Card>());
+            dealer.setCards(new ArrayList<Card>());
+
             System.out.println("Let me see that green " + player.getName() + "!");
-            System.out.println("You have " + player.getCash() + "!" + " How much you wanna bet?");
+            System.out.println("You have " + player.getCash() + " sheckles!" + " How much you wanna bet?");
+
             int playerBet = Integer.parseInt(userInput.next());
             player.setCash(player.getCash() - playerBet);
+
             System.out.println("Bet placed! You have " + player.getCash() + " spondoolies left!");
 
             System.out.println("\n");
@@ -47,34 +51,40 @@ public class Play {
             System.out.println("Your hand: ");
             System.out.println(player.getCards().get(0).getCardFaceValue() + " " + player.getCards().get(0).getSuit() + " - " + player.getCards().get(1).getCardFaceValue() + " " + player.getCards().get(1).getSuit());
             System.out.println("Hand total: " + player.handTotal() + "\n");
+
             System.out.println("Dealers hand: ");
-            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit());
+            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + "\n");
 
-            System.out.println("\n");
+            boolean gameRound = true;
 
-            System.out.println("Stick or Twist? (S/T)");
-            String stickOrTwist = userInput.next();
-            blackJack.stickOrTwist(player, stickOrTwist);
-
-            while (stickOrTwist.equals("T")) {
-                System.out.println(player.getCards().get(2).getCardFaceValue() + " " + player.getCards().get(2).getSuit());
-                System.out.println("Hand Total: " + player.handTotal() + "\n");
+            while (gameRound) {
                 System.out.println("Stick or Twist? (S/T)");
-                String stickOrTwist2 = userInput.next();
-                blackJack.stickOrTwist(player, stickOrTwist2);
-                if (stickOrTwist2.equals("S")) {
-                    System.out.println("Dealers hand: " + dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - " + dealer.getCards().get(1).getCardFaceValue() + " " + dealer.getCards().get(1).getSuit());
-                    System.out.println("Dealer's hand total: " + dealer.handTotal() + "\n");
-                    System.out.println(blackJack.compareTotals(dealer, player) + " WINS!");
-                    if (blackJack.compareTotals(dealer, player).equals(player.getName())) {
-                        player.setCash(player.getCash() + (playerBet * 2));
-                        break;
-                    } else {
-                        break;
-                    }
+                String stickOrTwist = userInput.next();
+
+                if(stickOrTwist.equals("T")) {
+                    blackJack.stickOrTwist(player, stickOrTwist);
+                    System.out.println(player.getCards().get(player.getCardsSize()-1).getCardFaceValue() + " " + player.getCards().get(player.getCardsSize()-1).getSuit());
+                    System.out.println("Hand total: " + player.handTotal() + "\n");
+                }
+
+                if(stickOrTwist.equals("S")) {
+                    break;
                 }
             }
+
+            System.out.println("\nDealers hand: " + dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - " + dealer.getCards().get(1).getCardFaceValue() + " " + dealer.getCards().get(1).getSuit());
+            System.out.println("Dealer's hand total: " + dealer.handTotal());
+            System.out.println("Your Hand total: " + player.handTotal() + "\n");
+
+            System.out.println(blackJack.compareTotals(dealer, player) + " WINS! \n");
+
+            if (blackJack.compareTotals(dealer, player).equals(player.getName())) {
+                player.setCash(player.getCash() + playerBet * 2);
+            }
+
+            gameRound = false;
         }
         System.out.println("WAH WAH WAH! You're outta luck - See ya!");
+        }
     }
-}
+
