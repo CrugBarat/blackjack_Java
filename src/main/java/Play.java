@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Play {
@@ -30,6 +31,7 @@ public class Play {
         System.out.println("\n");
 
         while(player.getCash() >0) {
+            player.setCards(new ArrayList<Card>());
             System.out.println("Let me see that green " + player.getName() + "!");
             System.out.println("You have " + player.getCash() + "!" + " How much you wanna bet?");
             int playerBet = Integer.parseInt(userInput.next());
