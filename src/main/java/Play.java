@@ -32,7 +32,6 @@ public class Play {
             players--;
         }
 
-        boolean isBlackJack = false;
         int playerBet = 0;
 
         while (gametable.getPlayersSize() > 0) {
@@ -74,7 +73,6 @@ public class Play {
 
                 while (gameRound) {
                     if (player.getCardsSize() == 2 && player.handTotal() == 21) {
-                        isBlackJack = true;
                         break;
                     }
 
@@ -99,19 +97,17 @@ public class Play {
             System.out.println("\nDealers hand: " + dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - " + dealer.getCards().get(1).getCardFaceValue() + " " + dealer.getCards().get(1).getSuit());
             System.out.println("Dealer's hand total: " + dealer.handTotal() + "\n");
 
-            if (isBlackJack == false) {
-                if (dealer.getCardsSize() == 2 && dealer.handTotal() == 21) {
-                    System.out.println("BLACKJACK Y'ALL!!!\n");
-                } else {
-                    while (dealer.handTotal() < 16) {
-                        System.out.println("Dealer twist:");
-                        blackJack.dealerTwist();
-                        System.out.println(dealer.getCards().get(dealer.getCardsSize() - 1).getCardFaceValue() + " " + dealer.getCards().get(dealer.getCardsSize() - 1).getSuit());
-                        System.out.println("Dealer total: " + dealer.handTotal() + "\n");
-                        if (dealer.handTotal() > 21) {
-                            System.out.println("Oooft! The Dealer's BUST! \n");
-                            break;
-                        }
+            if (dealer.getCardsSize() == 2 && dealer.handTotal() == 21) {
+                System.out.println("BLACKJACK Y'ALL!!!\n");
+            } else {
+                while (dealer.handTotal() < 16) {
+                    System.out.println("Dealer twist:");
+                    blackJack.dealerTwist();
+                    System.out.println(dealer.getCards().get(dealer.getCardsSize() - 1).getCardFaceValue() + " " + dealer.getCards().get(dealer.getCardsSize() - 1).getSuit());
+                    System.out.println("Dealer total: " + dealer.handTotal() + "\n");
+                    if (dealer.handTotal() > 21) {
+                        System.out.println("Oooft! The Dealer's BUST! \n");
+                        break;
                     }
                 }
             }

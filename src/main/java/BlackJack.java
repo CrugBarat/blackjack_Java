@@ -41,13 +41,13 @@ public class BlackJack {
     }
 
     public Object compareTotals(Dealer dealer, Player player) {
-        if (dealer.checkTotal() != player.checkTotal()) {
-            if (dealer.checkTotal() > player.checkTotal()) {
+        if (dealer.checkTotal() == player.checkTotal() && player.getCardsSize() == 2 && player.handTotal() == 21) {
+            return player.getName();
+        } else if (dealer.checkTotal() > player.checkTotal()) {
                 return dealer.getName();
-            } else {
+        } else if (dealer.checkTotal() < player.checkTotal()) {
                 return player.getName();
-            }
-        } return dealer.getName();
+        } else return dealer.getName();
     }
 
     public void newDeck() {
