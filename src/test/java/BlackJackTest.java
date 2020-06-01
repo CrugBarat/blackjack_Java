@@ -34,21 +34,6 @@ public class BlackJackTest {
     }
 
     @Test
-    public void canGetGameTable() {
-        assertEquals(gameTable, blackjack.getGameTable());
-    }
-
-    @Test
-    public void canGetDealer() {
-        assertEquals(dealer, blackjack.getDealer());
-    }
-
-    @Test
-    public void canGetDeck() {
-        assertEquals(deck, blackjack.getDeck());
-    }
-
-    @Test
     public void canDealCards() {
         blackjack.deal();
         assertEquals(2, player1.getCardsSize());

@@ -33,6 +33,7 @@ public class Play {
         while(player.getCash() >0) {
             player.setCards(new ArrayList<Card>());
             dealer.setCards(new ArrayList<Card>());
+            blackJack.newDeck();
 
             System.out.println("Let me see that green " + player.getName() + "!");
             System.out.println("You have " + player.getCash() + " sheckles!" + " How much you wanna bet?");
@@ -42,11 +43,11 @@ public class Play {
 
             System.out.println("Bet placed! You have " + player.getCash() + " spondoolies left!");
 
+            blackJack.deal();
+
             System.out.println("\n");
             System.out.println("Beep Bop Boop. Dealing.........");
             System.out.println("\n");
-
-            blackJack.deal();
 
             System.out.println("Your hand: ");
             System.out.println(player.getCards().get(0).getCardFaceValue() + " " + player.getCards().get(0).getSuit() + " - " + player.getCards().get(1).getCardFaceValue() + " " + player.getCards().get(1).getSuit());

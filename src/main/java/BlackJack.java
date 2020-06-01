@@ -12,18 +12,6 @@ public class BlackJack {
         this.deck.shuffleCards();
     }
 
-    public GameTable getGameTable() {
-        return this.gameTable;
-    }
-
-    public Dealer getDealer() {
-        return this.dealer;
-    }
-
-    public Deck getDeck() {
-        return this.deck;
-    }
-
     public void deal() {
         if (this.gameTable.getPlayersSize() > 0) {
             for (Player player : this.gameTable.getPlayers()) {
@@ -57,6 +45,12 @@ public class BlackJack {
                 return player.getName();
             }
         } return dealer.getName();
+    }
+
+    public void newDeck() {
+        this.deck = new Deck();
+        this.deck.addCards();
+        this.deck.shuffleCards();
     }
 
 }
