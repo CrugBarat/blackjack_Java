@@ -24,10 +24,10 @@ public class Play {
         System.out.println("Welcome " + player.getName() + "!");
 
 
-        System.out.println("How much cash do you have?");
+        System.out.println("How much cash you got?");
         int cash = Integer.parseInt(userInput.next());
         player.setCash(cash);
-        System.out.println("Sweet! You have " + player.getCash() + " bucks " + player.getName() + "!");
+        System.out.println("Sweet! Here's " + player.getCash() + " bucks worth of chips " + player.getName() + "!");
         System.out.println("\n");
 
         while(player.getCash() >0) {
@@ -53,11 +53,18 @@ public class Play {
             System.out.println("Hand total: " + player.handTotal() + "\n");
 
             System.out.println("Dealers hand: ");
-            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + "\n");
+            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - |HOLE CARD|\n");
 
             boolean gameRound = true;
+            Boolean isBlackJack = false;
 
             while (gameRound) {
+                if(player.getCardsSize() == 2 && player.handTotal() == 21) {
+                    System.out.println("BLACKJACK Y'ALL!!!");
+                    isBlackJack = true;
+                    break;
+                }
+
                 System.out.println("Stick or Twist? (S/T)");
                 String stickOrTwist = userInput.next();
 
@@ -66,7 +73,7 @@ public class Play {
                     System.out.println("\n" + player.getCards().get(player.getCardsSize()-1).getCardFaceValue() + " " + player.getCards().get(player.getCardsSize()-1).getSuit());
                     System.out.println("Hand total: " + player.handTotal() + "\n");
                     if(player.handTotal() > 21) {
-                        System.out.println("No luck, you're BUST");
+                        System.out.println("No luck, you're BUST!");
                         break;
                     }
                 }
@@ -79,14 +86,20 @@ public class Play {
             System.out.println("\nDealers hand: " + dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - " + dealer.getCards().get(1).getCardFaceValue() + " " + dealer.getCards().get(1).getSuit());
             System.out.println("Dealer's hand total: " + dealer.handTotal() + "\n");
 
-            while(dealer.handTotal() < 16) {
-                System.out.println("Dealer twist:");
-                blackJack.dealerTwist();
-                System.out.println(dealer.getCards().get(dealer.getCardsSize()-1).getCardFaceValue() + " " + dealer.getCards().get(dealer.getCardsSize()-1).getSuit());
-                System.out.println("Dealer total: " + dealer.handTotal() + "\n");
-                if(dealer.handTotal() > 21){
-                    System.out.println("Oooft! The Dealer's BUST \n");
-                    break;
+            if(isBlackJack == false) {
+                if (dealer.getCardsSize() == 2 && dealer.handTotal() == 21) {
+                    System.out.println("BLACKJACK Y'ALL!!!\n");
+                } else {
+                    while (dealer.handTotal() < 16) {
+                        System.out.println("Dealer twist:");
+                        blackJack.dealerTwist();
+                        System.out.println(dealer.getCards().get(dealer.getCardsSize() - 1).getCardFaceValue() + " " + dealer.getCards().get(dealer.getCardsSize() - 1).getSuit());
+                        System.out.println("Dealer total: " + dealer.handTotal() + "\n");
+                        if (dealer.handTotal() > 21) {
+                            System.out.println("Oooft! The Dealer's BUST! \n");
+                            break;
+                        }
+                    }
                 }
             }
 
