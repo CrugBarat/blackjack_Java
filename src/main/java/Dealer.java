@@ -17,5 +17,4 @@ public class Dealer extends Player {
         addCard(deck.dealCard());
     }
 
-
 }
