@@ -53,4 +53,10 @@ public class BlackJack {
         this.deck.shuffleCards();
     }
 
+    public void checkPlayerCash(Player player) {
+        if (player.getCash() == 0) {
+            this.gameTable.removePlayer(player);
+        }
+    }
+
 }

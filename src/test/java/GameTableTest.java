@@ -28,6 +28,13 @@ public class GameTableTest {
     }
 
     @Test
+    public void canRemovePlayer() {
+        gameTable.addPlayer(player);
+        gameTable.removePlayer(player);
+        assertEquals(0, gameTable.getPlayersSize());
+    }
+
+    @Test
     public void canAddDealer() {
         gameTable.addPlayer(dealer);
         assertEquals(1, gameTable.getPlayersSize());

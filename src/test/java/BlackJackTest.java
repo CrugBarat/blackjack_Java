@@ -121,4 +121,20 @@ public class BlackJackTest {
         assertEquals("Jane Doe", blackjack.compareTotals(dealer, player1));
     }
 
+    @Test
+    public void canRemovePlayerIfNoCash() {
+        player1.setCash(0);
+        blackjack.checkPlayerCash(player1);
+        assertEquals(3, gameTable.getPlayersSize());
+    }
+
+    @Test
+    public void canRemoveMultiplePlayersIfNoCash() {
+        player1.setCash(0);
+        player2.setCash(0);
+        blackjack.checkPlayerCash(player1);
+        blackjack.checkPlayerCash(player2);
+        assertEquals(2, gameTable.getPlayersSize());
+    }
+
 }

@@ -20,4 +20,7 @@ public class GameTable {
         this.players.add(player);
     }
 
+    public void removePlayer(Player player) {
+        this.players.remove(player);
+    }
 }
