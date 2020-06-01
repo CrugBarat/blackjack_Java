@@ -25,7 +25,6 @@ public class BlackJackTest {
         gameTable.addPlayer(player4);
         dealer = new Dealer("Jane Doe");
         deck = new Deck();
-        deck.addCards();
         blackjack = new BlackJack(gameTable, dealer, deck);
         card1 = new Card(CardSuit.HEARTS, CardValue.SEVEN);
         card2 = new Card(CardSuit.CLUBS, CardValue.ACE);
