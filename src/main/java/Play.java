@@ -37,13 +37,6 @@ public class Play {
 
         while (gametable.getPlayersSize() > 0) {
             for (Player player : gametable.getPlayers()) {
-                blackJack.checkPlayerCash(player);
-                if(gametable.getPlayersSize() == 0) {
-                    break;
-                }
-            }
-
-            for (Player player : gametable.getPlayers()) {
                 player.setCards(new ArrayList<Card>());
             }
 
@@ -65,20 +58,22 @@ public class Play {
 
                 System.out.println("Bet placed! You have " + player.getCash() + " spondoolies left!");
 
-
                 System.out.println("\n" + player.getName() + "'s hand:");
                 System.out.println(player.getCards().get(0).getCardFaceValue() + " " + player.getCards().get(0).getSuit() + " - " + player.getCards().get(1).getCardFaceValue() + " " + player.getCards().get(1).getSuit());
                 System.out.println("Hand total: " + player.handTotal() + "\n");
+                if (player.handTotal() == 21) {
+                    System.out.println(player.getName() + " HAS BLACKJACK Y'ALL!!!\n");
+                }
+
             }
             System.out.println("Dealers hand: ");
-            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - |HOLE CARD|\n");
+            System.out.println(dealer.getCards().get(0).getCardFaceValue() + " " + dealer.getCards().get(0).getSuit() + " - |HOLE CARD|");
 
             for (Player player : gametable.getPlayers()) {
                 boolean gameRound = true;
 
                 while (gameRound) {
                     if (player.getCardsSize() == 2 && player.handTotal() == 21) {
-                        System.out.println("BLACKJACK Y'ALL!!!");
                         isBlackJack = true;
                         break;
                     }
@@ -125,11 +120,18 @@ public class Play {
                 System.out.println("Dealer total: " + dealer.handTotal());
                 System.out.println(player.getName() + " Hand total: " + player.handTotal() + "\n");
 
-                System.out.println(blackJack.compareTotals(dealer, player) + " WINS!");
+                System.out.println(blackJack.compareTotals(dealer, player) + " WINS!\n");
 
                 if (blackJack.compareTotals(dealer, player).equals(player.getName())) {
                     player.setCash(player.getCash() + playerBet * 2);
                 }
+
+            }
+
+            blackJack.checkPlayerCash();
+
+            if(gametable.getPlayersSize() == 0) {
+                break;
             }
         }
         System.out.println("WAH WAH WAH! GAME OVER - no players with cashola!");

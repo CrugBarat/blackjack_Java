@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlackJack {
 
     private Dealer dealer;
@@ -53,10 +56,14 @@ public class BlackJack {
         this.deck.shuffleCards();
     }
 
-    public void checkPlayerCash(Player player) {
-        if (player.getCash() == 0) {
-            this.gameTable.removePlayer(player);
+    public void checkPlayerCash() {
+        List<Player> toRemove = new ArrayList<Player>();
+        for(Player player : this.gameTable.getPlayers()) {
+            if (player.getCash() == 0) {
+                toRemove.add(player);
+            }
         }
+        this.gameTable.removeAll(toRemove);
     }
 
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameTable {
 
@@ -22,5 +23,11 @@ public class GameTable {
 
     public void removePlayer(Player player) {
         this.players.remove(player);
+    }
+
+    public void removeAll(List<Player> toRemove) {
+        for (Player player: toRemove) {
+            removePlayer(player);
+        }
     }
 }

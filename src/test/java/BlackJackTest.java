@@ -124,17 +124,17 @@ public class BlackJackTest {
     @Test
     public void canRemovePlayerIfNoCash() {
         player1.setCash(0);
-        blackjack.checkPlayerCash(player1);
+        player2.setCash(10);
+        player3.setCash(10);
+        player4.setCash(10);
+        blackjack.checkPlayerCash();
         assertEquals(3, gameTable.getPlayersSize());
     }
 
     @Test
     public void canRemoveMultiplePlayersIfNoCash() {
-        player1.setCash(0);
-        player2.setCash(0);
-        blackjack.checkPlayerCash(player1);
-        blackjack.checkPlayerCash(player2);
-        assertEquals(2, gameTable.getPlayersSize());
+        blackjack.checkPlayerCash();
+        assertEquals(0, gameTable.getPlayersSize());
     }
 
 }
